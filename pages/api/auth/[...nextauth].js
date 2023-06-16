@@ -1,8 +1,8 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth/next"
 //import GithubProvider from "next-auth/providers/github"
 //import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
-export const authOptions = {
+export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     
@@ -13,6 +13,6 @@ export const authOptions = {
     
     // ...add more providers here
   ],
-}
+  secret:process.env.JWT_SECRET
+});
 
-export default NextAuth(authOptions)
