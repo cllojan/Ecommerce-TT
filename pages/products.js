@@ -1,9 +1,8 @@
-import Layout from "@/components/Layout";
+import {Layout as lay} from "@/components/Layout";
 
 export default function Products(){
-    return (
-        <Layout>
+    return <lay>
             Products page here
-        </Layout>
-    )
+        </lay>    
+    
 }
