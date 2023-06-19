@@ -1,7 +1,9 @@
-import NextAuth from "next-auth/next"
+import NextAuth from "next-auth/next";
 //import GithubProvider from "next-auth/providers/github"
 //import EmailProvider from 'next-auth/providers/email'
-import GoogleProvider from 'next-auth/providers/google'
+import GoogleProvider from 'next-auth/providers/google';
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/lib/mongodb";
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
@@ -13,6 +15,7 @@ export default NextAuth({
     
     // ...add more providers here
   ],
-  secret:process.env.JWT_SECRET
+  secret:process.env.JWT_SECRET,
+  adapter: MongoDBAdapter(clientPromise),
 });
 
