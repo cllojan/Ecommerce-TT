@@ -85,26 +85,39 @@ export default function ProductForm({
 
   return (
       <form onSubmit={saveProduct}>
-        <label>Product name</label>
-        <input
-          type="text"
-          placeholder="product name"
-          value={title}
-          onChange={ev => setTitle(ev.target.value)}/>
-        <label>Category</label>
-        <select value={category}
-                onChange={ev => setCategory(ev.target.value)}>
-          <option value="">Uncategorized</option>
+          <label  className="block text-xs font-medium text-gray-700">
+            Nombre del producto
+          </label>
+          <input
+            type="text"
+            placeholder="INTEL"  
+            onChange={ev => setTitle(ev.target.value)}
+            value={title}
+            className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+          />
+        
+        <label  className="block text-xs font-medium text-gray-700">
+            Categoria
+        </label>
+        <select
+          value={category}
+          onChange={ev => setCategory(ev.target.value)}
+          class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
+        >
+          <option value="">Seleccione una categoria</option>
           {categories.length > 0 && categories.map(c => (
             <option key={c._id} value={c._id}>{c.name}</option>
           ))}
         </select>
+        
         {propertiesToFill.length > 0 && propertiesToFill.map(p => (
           <div key={p.name} className="">
             <label>{p.name[0].toUpperCase()+p.name.substring(1)}</label>
             <div>
               <select value={productProperties[p.name]}
-                      onChange={ev =>
+              className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                      onChange={ev => 
+                        
                         setProductProp(p.name,ev.target.value)
                       }
               >
@@ -115,13 +128,14 @@ export default function ProductForm({
             </div>
           </div>
         ))}
-        <label>
-          Photos
+        <label  className="block text-xs font-medium text-gray-700">
+            Imagenes
         </label>
         <div className="mb-2 flex flex-wrap gap-1">
           <ReactSortable
             list={images}
-            className="flex flex-wrap gap-1"
+            className="flex flex-wrap gap-1 mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+            
             setList={updateImagesOrder}>
             {!!images?.length && images.map(link => (
               <div key={link} className="h-24 bg-white p-4 shadow-sm rounded-sm border border-gray-200">
@@ -144,22 +158,29 @@ export default function ProductForm({
             <input type="file" onChange={uploadImages} className="hidden"/>
           </label>
         </div>
-        <label>Description</label>
+        <label  className="block text-xs font-medium text-gray-700">
+            Descripcion
+        </label>
         <textarea
-          placeholder="description"
-          value={description}
-          onChange={ev => setDescription(ev.target.value)}
-        />
-        <label>Price (in USD)</label>
+    className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+    value={description}
+    rows="3"
+    onChange={ev => setDescription(ev.target.value)}
+    ></textarea>        
+         <label  className="block text-xs font-medium text-gray-700">
+            Precio 
+        </label>
         <input
+        className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
           type="number" placeholder="price"
           value={price}
           onChange={ev => setPrice(ev.target.value)}
         />
         <button
           type="submit"
-          className="btn-primary">
-          Save
+          className="inline-block rounded bg-indigo-600  px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 flex"
+          >
+          Guardar
         </button>
       </form>
   );
