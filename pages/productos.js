@@ -13,7 +13,7 @@ export default function Products() {
   return (
     <Layout>
       <h1 className="">Productos</h1>
-      <Link className="inline-block rounded bg-indigo-600 mb-5 w-48 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 flex" href={'/products/new'}>+ Agregar nuevo producto</Link>
+      <Link className="inline-block rounded bg-indigo-600 mb-5 w-48 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 flex" href={'/products/agregar'}>+ Agregar nuevo producto</Link>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
           <thead className="">
