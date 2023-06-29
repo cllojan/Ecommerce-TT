@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { withSwal } from 'react-sweetalert2';
-
+import Link from "next/link";
 function Categories({swal}) {
   const [editedCategory, setEditedCategory] = useState(null);
   const [name,setName] = useState('');
@@ -170,7 +170,7 @@ function Categories({swal}) {
             </button>
           </div>
         </form>
-          : ''}
+          : <Link className="inline-block rounded bg-indigo-600 mb-5 w-48 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700 flex" href={'/categorias/agregar'}>+ Agregar nueva categoria</Link>}
       {!editedCategory && (
       
         <div className="overflow-x-auto">
