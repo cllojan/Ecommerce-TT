@@ -3,6 +3,7 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import Spinner from "@/components/Spinner";
 import {ReactSortable} from "react-sortablejs";
+import { uploadFile } from "@/pages/firebase/config";
 
 export default function ProductForm({
   _id,
@@ -44,20 +45,23 @@ export default function ProductForm({
     setGoToProducts(true);
   }
   if (goToProducts) {
-    router.push('/products');
+    router.push('/productos');
   }
   async function uploadImages(ev) {
     const files = ev.target?.files;
+    //const res = uploadFile(files);
+    console.log(files);
     if (files?.length > 0) {
       setIsUploading(true);
-      const data = new FormData();
+      const data = [];
       for (const file of files) {
-        data.append('file', file);
+        const res = await uploadFile(file);
+        data.push(res);
       }
-      const res = await axios.post('/api/upload', data);
       setImages(oldImages => {
-        return [...oldImages, ...res.data.links];
-      });
+        return [...oldImages,...data]
+      })
+      console.log(...data);
       setIsUploading(false);
     }
   }
