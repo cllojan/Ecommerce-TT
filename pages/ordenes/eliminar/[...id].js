@@ -5,27 +5,27 @@ import axios from "axios";
 
 export default function DeleteProductPage() {
   const router = useRouter();
-  const [productInfo,setProductInfo] = useState();
+  const [orderInfo,setOrderInfo] = useState();
   const {id} = router.query;
   useEffect(() => {
     if (!id) {
       return;
     }
-    axios.get('/api/products?id='+id).then(response => {
-      setProductInfo(response.data);
+    axios.get('/api/orders?id='+id).then(response => {
+      setOrderInfo(response.data);
     });
   }, [id]);
   function goBack() {
-    router.push('/products');
+    router.push('/ordenes');
   }
   async function deleteProduct() {
-    await axios.delete('/api/products?id='+id);
+    await axios.delete('/api/orders?id='+id);
     goBack();
   }
   return (
     <Layout>
-      <h1 className="text-center">Estas seguro que quieres eliminar el siguiente producto
-        &nbsp;&quot;{productInfo?.title}&quot;?
+      <h1 className="text-center">Estas seguro que quieres eliminar la orden de 
+        &quot;{orderInfo?.name}&quot;?
       </h1>
       <div className="flex gap-2 justify-center">
         <button
