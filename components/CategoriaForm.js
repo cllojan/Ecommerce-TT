@@ -70,25 +70,25 @@ const CategoriaForm = () => {
             <div className="flex gap-1">
                 <input
                     type="text"
-                    placeholder={'Category name'}
+                    placeholder={'Nombre categoria'}
                     onChange={ev => setName(ev.target.value)}
                     value={name} />
                 <select
                     onChange={ev => setParentCategory(ev.target.value)}
                     value={parentCategory}>
-                    <option value="">No parent category</option>
+                    <option value="">Seleccion categoria padre</option>
                     {categories.length > 0 && categories.map(category => (
                         <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                 </select>
             </div>
             <div className="mb-2">
-                <label className="block">Properties</label>
+                <label className="block">Propiedad</label>
                 <button
                     onClick={addProperty}
                     type="button"
                     className="btn-default text-sm mb-2">
-                    Add new property
+                    Agregar una propiedad
                 </button>
                 {properties.length > 0 && properties.map((property, index) => (
                     <div key={property.name} className="flex gap-1 mb-2">
@@ -96,7 +96,7 @@ const CategoriaForm = () => {
                             value={property.name}
                             className="mb-0"
                             onChange={ev => handlePropertyNameChange(index, property, ev.target.value)}
-                            placeholder="property name (example: color)" />
+                            placeholder="Color de categoria" />
                         <input type="text"
                             className="mb-0"
                             onChange={ev =>
@@ -105,12 +105,12 @@ const CategoriaForm = () => {
                                     property, ev.target.value
                                 )}
                             value={property.values}
-                            placeholder="values, comma separated" />
+                            placeholder="Valores separados por comas" />
                         <button
                             onClick={() => removeProperty(index)}
                             type="button"
                             className="btn-red">
-                            Remove
+                            Eliminar
                         </button>
                     </div>
                 ))}
@@ -125,11 +125,11 @@ const CategoriaForm = () => {
                             setParentCategory('');
                             setProperties([]);
                         }}
-                        className="btn-default">Cancel</button>
+                        className="btn-default">Cancelar</button>
                 )}
                 <button type="submit"
                     className="btn-primary py-1">
-                    Save
+                    Guardar
                 </button>
             </div>
         </form>

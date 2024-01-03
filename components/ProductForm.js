@@ -114,24 +114,7 @@ export default function ProductForm({
           ))}
         </select>
         
-        {propertiesToFill.length > 0 && propertiesToFill.map(p => (
-          <div key={p.name} className="">
-            <label>{p.name[0].toUpperCase()+p.name.substring(1)}</label>
-            <div>
-              <select value={productProperties[p.name]}
-              className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-                      onChange={ev => 
-                        
-                        setProductProp(p.name,ev.target.value)
-                      }
-              >
-                {p.values.map(v => (
-                  <option key={v} value={v}>{v}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        ))}
+        
         <label  className="block text-xs font-medium text-gray-700">
             Imagenes
         </label>

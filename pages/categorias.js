@@ -113,19 +113,19 @@ function Categories({swal}) {
             <select
                     onChange={ev => setParentCategory(ev.target.value)}
                     value={parentCategory}>
-              <option value="">No parent category</option>
+              <option value="">Seleccione categoria padre</option>
               {categories.length > 0 && categories.map(category => (
                 <option key={category._id} value={category._id}>{category.name}</option>
               ))}
             </select>
           </div>
           <div className="mb-2">
-            <label className="block">Properties</label>
+            <label className="block">Propiedad</label>
             <button
               onClick={addProperty}
               type="button"
               className="btn-default text-sm mb-2">
-              Add new property
+              Agregar nueva propiedad
             </button>
             {properties.length > 0 && properties.map((property,index) => (
               <div key={property.name} className="flex gap-1 mb-2">
@@ -133,7 +133,7 @@ function Categories({swal}) {
                        value={property.name}
                        className="mb-0"
                        onChange={ev => handlePropertyNameChange(index,property,ev.target.value)}
-                       placeholder="property name (example: color)"/>
+                       placeholder="Color de propiedad"/>
                 <input type="text"
                        className="mb-0"
                        onChange={ev =>
@@ -142,12 +142,12 @@ function Categories({swal}) {
                            property,ev.target.value
                          )}
                        value={property.values}
-                       placeholder="values, comma separated"/>
+                       placeholder="Valor separados por comas"/>
                 <button
                   onClick={() => removeProperty(index)}
                   type="button"
                   className="btn-red">
-                  Remove
+                  Eliminar
                 </button>
               </div>
             ))}
@@ -162,11 +162,11 @@ function Categories({swal}) {
                   setParentCategory('');
                   setProperties([]);
                 }}
-                className="btn-default">Cancel</button>
+                className="btn-default">Cancelar</button>
             )}
             <button type="submit"
                     className="btn-primary py-1">
-              Save
+              Guardar
             </button>
           </div>
         </form>
