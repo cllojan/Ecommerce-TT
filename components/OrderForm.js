@@ -12,20 +12,20 @@ export default function OrderForm({
   ,name:existingName
   ,email:existingEmail
   ,cellphone:existingCellPhone
-  ,city:existingCity
-  ,postalCode:existingPostalCode
+  ,parish:existingParish
+  ,canton:existingCanton
   ,streetAddress:existingStreetAddress
-  ,country:existingCountry
+  ,province:existingProvince
   ,paid:existingPaid
 }) {
   const [lineItems,setLineItems] = useState(existingLineItems || []);
   const [name,setName] = useState(existingName || '');
   const [email,setEmail] = useState(existingEmail|| '');
   const [cellphone, setCellphone] = useState(existingCellPhone || "");
-  const [city,setCity] = useState(existingCity|| "");
-  const [postalCode,setPostalCode] = useState(existingPostalCode || '');
+  const [parish,setParish] = useState(existingParish|| "");
+  const [canton,setCanton] = useState(existingCanton || '');
   const [streetAddress,setStreetAdress] = useState(existingStreetAddress || "");
-  const [country,setCountry] = useState(existingCountry );
+  const [province,setProvince] = useState(existingProvince );
   const [isPaid,setIsPaid] = useState(existingPaid);  
   const router = useRouter();
   
@@ -46,47 +46,7 @@ export default function OrderForm({
     }
     //setGoToProducts(true);
   }
-  /*
-  async function uploadImages(ev) {
-    const files = ev.target?.files;
-    //const res = uploadFile(files);
-    console.log(files);
-    if (files?.length > 0) {
-      setIsUploading(true);
-      const data = [];
-      for (const file of files) {
-        const res = await uploadFile(file);
-        data.push(res);
-      }
-      setImages(oldImages => {
-        return [...oldImages,...data]
-      })
-      console.log(...data);
-      setIsUploading(false);
-    }
-  }
-  function updateImagesOrder(images) {
-    setImages(images);
-  }
-  function setProductProp(propName,value) {
-    setProductProperties(prev => {
-      const newProductProps = {...prev};
-      newProductProps[propName] = value;
-      return newProductProps;
-    });
-  }
-
-  const propertiesToFill = [];
-  if (categories.length > 0 && category) {
-    let catInfo = categories.find(({_id}) => _id === category);
-    propertiesToFill.push(...catInfo.properties);
-    while(catInfo?.parent?._id) {
-      const parentCat = categories.find(({_id}) => _id === catInfo?.parent?._id);
-      propertiesToFill.push(...parentCat.properties);
-      catInfo = parentCat;
-    }
-  }
-*/
+ 
   return (
       <form onSubmit={saveProduct}>
           <label  className="block text-xs font-medium text-gray-700">
@@ -130,7 +90,7 @@ export default function OrderForm({
 			<input
 			className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
 			  type="text" placeholder="price"
-			  value={country}
+			  value={province}
 			  onChange={ev => setPrice(ev.target.value)}
 			  disabled
 			/>
@@ -143,7 +103,7 @@ export default function OrderForm({
 			
 			className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
 			  type="text" placeholder="price"
-			  value={postalCode}
+			  value={canton}
 			  onChange={ev => setPrice(ev.target.value)}
 			  disabled
 			/>
@@ -156,7 +116,7 @@ export default function OrderForm({
         className="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
           type="text" placeholder="price"
 		  disabled
-          value={city}
+          value={parish}
           onChange={ev => setPrice(ev.target.value)}
         />
 		<label  className="block text-xs font-medium text-gray-700">
